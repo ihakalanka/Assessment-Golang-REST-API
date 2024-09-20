@@ -1,0 +1,67 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+/app   # If your binary is named `app`, ignore it.
+
+# Logs
+*.log
+log/
+logs/
+
+# Configuration files
+.env
+config.yaml  # If you're using YAML for config files, and don't want to push it to git.
+
+# Dependency directories
+/vendor/
+
+# Go module files
+go.sum
+
+# Database and storage files (if applicable)
+*.db
+*.sqlite
+
+# Generated documentation
+*.out
+*.html
+*.pdf
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE specific directories/files
+.idea/
+.vscode/
+
+# Go build cache
+/go/bin/
+/go/pkg/
+/go/src/
+
+# Build artifacts
+/build/
+/dist/
+
+# Coverage files (if you are using Go test coverage)
+*.coverprofile
+coverage.out
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# Docker-specific
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Avoid committing sensitive secrets, keys, etc.
+*.pem
+*.key
+*.crt
