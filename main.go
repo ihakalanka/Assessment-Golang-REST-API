@@ -4,10 +4,10 @@ import (
 	"net/http"
 	"os"
 	"time"
-	"github.com/ihakalanka/Assessment-Golang-REST-API/config"
-	"github.com/ihakalanka/Assessment-Golang-REST-API/middleware"
-	"github.com/ihakalanka/Assessment-Golang-REST-API/routes"
-	"github.com/ihakalanka/Assessment-Golang-REST-API/utils"
+	"github.com/ihakalanka/Assessment-Golang-REST-API/internal/config"
+	"github.com/ihakalanka/Assessment-Golang-REST-API/internal/middleware"
+	"github.com/ihakalanka/Assessment-Golang-REST-API/internal/routes"
+	"github.com/ihakalanka/Assessment-Golang-REST-API/pkg"
 	"github.com/labstack/echo/v4"
 	echomiddleware "github.com/labstack/echo/v4/middleware"
 )
@@ -15,7 +15,7 @@ import (
 func main() {
     config.ConnectDB()
 
-    utils.InitLogger()
+    pkg.InitLogger()
 
     e := echo.New()
 
@@ -53,9 +53,9 @@ func main() {
     PORT := os.Getenv("PORT")
     if PORT == "" {
         PORT = "8080"
-        utils.Log.Warn("PORT not set in environment variables, defaulting to 8080")
+        pkg.Log.Warn("PORT not set in environment variables, defaulting to 8080")
     }
 
-    utils.Log.Infof("Starting server on port %s", PORT)
+    pkg.Log.Infof("Starting server on port %s", PORT)
     e.Logger.Fatal(e.Start(":" + PORT))
 }
