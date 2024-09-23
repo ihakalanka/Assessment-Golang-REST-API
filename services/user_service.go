@@ -66,6 +66,16 @@ func Update(user models.User) (models.User, error) {
         return models.User{}, err
     }
 
+    if user.Password != "" {
+        hashedPassword, err := utils.HashPassword(user.Password)
+        if err != nil {
+            return models.User{}, fmt.Errorf("error hashing password: %w", err)
+        }
+        user.Password = hashedPassword
+    } else {
+        user.Password = existingUser.Password
+    }
+
     if err := config.DB.Model(&existingUser).Updates(user).Error; err != nil {
         return models.User{}, err
     }
